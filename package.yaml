@@ -1,0 +1,55 @@
+name:                headlens
+version:             1.0.0.0
+github:              "grzegorias/headlens"
+license:             AGPL-3
+author:              "Grzegorz Milka"
+maintainer:          "grzegorzmilka@gmail.com"
+copyright:           "2020 Grzegorz Milka"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/headlens#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+# Defaults recommended by https://kowainik.github.io/posts/2019-02-06-style-guide#default-extensions
+# Also use Relude
+default-extensions:
+  DerivingStrategies
+  GeneralisedNewtypeDeriving
+  LambdaCase
+  NoImplicitPrelude
+  ScopedTypeVariables
+  TupleSections
+  TypeApplications
+  UnicodeSyntax
+
+library:
+  source-dirs: src
+  dependencies:
+    - lens
+    - relude
+
+tests:
+  headlens-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - QuickCheck
+    - headlens
+    - hspec
+    - lens
+    - relude
