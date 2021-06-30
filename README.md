@@ -13,6 +13,12 @@ the laws stipulated in the documentation (they require `Traversal'` type).
 A comment remarks that a Traversal shouldn't increase the number of elements.
 My head lens would contradict that property as it would add a head to an empty list.
 
+`Setter' [a] (Maybe a)` that removes the head when provided with nothing, e.g.,
+with `set l Nothing` doesn't satisfy setter laws. It doesn't satisfy `over l f
+. over l g ≡ over l (f . g)` as the left side can remove the head twice while
+the right side can do it at most once.
+There's a commented test-case for this in unit-tests.
+
 It's impossible to create a Lens for this, because Lens encodes a has-a
 relationship but empty lists have no heads. Types won't work out (
 `view` is impossible to implement).
