@@ -52,4 +52,5 @@ tests:
     - headlens
     - hspec
     - lens
+    - lens-properties
     - relude

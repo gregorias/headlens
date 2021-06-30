@@ -54,5 +54,6 @@ test-suite headlens-test
     , headlens
     , hspec
     , lens
+    , lens-properties
     , relude
   default-language: Haskell2010
